@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import DefaultLayout from "../../components/DefaultLayout";
 
-const Log = ({ log: { type, message, date } }) => {
+const Log = ({ log: { type, message, date } = {} }) => {
   const logDate = new Date(date);
 
   return (
@@ -18,8 +18,9 @@ const Log = ({ log: { type, message, date } }) => {
 
 Log.getInitialProps = async function(context) {
   const { id } = context.query;
-  const res = await fetch(`https://lumberjack-c45e4.firebaseio.com/${id}.json`);
-  const log = await res.json();
+  const res = await fetch(`http://localhost:3000/api/logs`);
+  const logs = await res.json();
+  const log = logs.find(x => x.id === parseInt(id));
 
   return {
     log
