@@ -82,7 +82,7 @@ const Index = ({ logs, ...rest }) => (
 );
 
 Index.getInitialProps = async function() {
-  const res = await fetch("https://lumberjack-c45e4.firebaseio.com/.json");
+  const res = await fetch("http://localhost:3000/api/logs");
   const logs = await res.json();
 
   console.log(`Show data fetched. Count: ${logs.length}`);
