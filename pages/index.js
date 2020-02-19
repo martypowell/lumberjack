@@ -1,5 +1,6 @@
 import DefaultLayout from "../components/DefaultLayout";
 import Link from "next/link";
+import fetch from "isomorphic-unfetch";
 import useSWR from "swr";
 
 function fetcher(url) {
@@ -51,8 +52,8 @@ const LogItem = ({ id, type, message, date }) => {
   );
 };
 
-const Index = props => {
-  const { data: logs, error } = useSWR("/api/logs", fetcher);
+const Index = ({ logs: initialData }) => {
+  const { data: logs, error } = useSWR("/api/logs", fetcher, { initialData });
 
   if (error) return <div>failed to load</div>;
   if (!logs) return <div>loading...</div>;
@@ -92,15 +93,15 @@ const Index = props => {
   );
 };
 
-// Index.getInitialProps = async function() {
-//   const res = await fetch("http://localhost:3000/api/logs");
-//   const logs = await res.json();
+Index.getInitialProps = async function() {
+  const res = await fetch("http://localhost:3000/api/logs");
+  const logs = await res.json();
 
-//   console.log(`Show data fetched. Count: ${logs.length}`);
+  console.log(`Show data fetched. Count: ${logs.length}`);
 
-//   return {
-//     logs
-//   };
-// };
+  return {
+    logs
+  };
+};
 
 export default Index;
