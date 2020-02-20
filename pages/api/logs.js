@@ -25,6 +25,19 @@ const logs = [
   }
 ];
 
-export default (req, res) => {
+const handleGET = (req, res) => {
   res.status(200).json(logs);
+};
+
+const handlePOST = ({ body: requestBody }, res) => {
+  const log = JSON.parse(requestBody);
+  res.status(200).json({ ...log, ...{ date: new Date() } });
+};
+
+export default (req, res) => {
+  if (req.method.toUpperCase() === "POST") {
+    handlePOST(req, res);
+  } else {
+    handleGET(req, res);
+  }
 };
