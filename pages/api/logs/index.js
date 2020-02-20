@@ -31,15 +31,7 @@ let logs = [
  * @param {object} res
  */
 const handleGET = (req, res) => {
-  const {
-    query: { id }
-  } = req;
-
-  if (id) {
-    res.status(200).json(logs.find(x => x.id === parseInt(id)));
-  } else {
-    res.status(200).json(logs);
-  }
+  res.status(200).json(logs);
 };
 
 /**
