@@ -1,4 +1,4 @@
-import Navbar from "../components/NavBar";
+import Navbar from "./NavBar";
 
 const layoutStyle = {
   margin: 20,
