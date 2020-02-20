@@ -1,4 +1,4 @@
-const logs = [
+let logs = [
   {
     id: 1,
     type: "warning",
@@ -25,10 +25,20 @@ const logs = [
   }
 ];
 
+/**
+ * Handle GET requests to the logs endpoint
+ * @param {object} req
+ * @param {object} res
+ */
 const handleGET = (req, res) => {
   res.status(200).json(logs);
 };
 
+/**
+ * Handle POST requests to the logs endpoint
+ * @param {object} req
+ * @param {object} res
+ */
 const handlePOST = ({ body: requestBody }, res) => {
   const log = JSON.parse(requestBody);
   res.status(200).json({ ...log, ...{ date: new Date() } });
