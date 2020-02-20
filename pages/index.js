@@ -1,35 +1,11 @@
 import DefaultLayout from "../components/DefaultLayout";
-import Link from "next/link";
 import fetch from "isomorphic-unfetch";
 import useSWR from "swr";
+import LogLink from "../components/LogLink";
 
 function fetcher(url) {
   return fetch(url).then(r => r.json());
 }
-
-const LogLink = ({ id, label }) => (
-  <>
-    <Link href="/logs/[id]" as={`logs/${id}`}>
-      <a>{label}</a>
-    </Link>
-    <style jsx>{`
-      li {
-        list-style: none;
-        margin: 5px 0;
-      }
-
-      a {
-        text-decoration: none;
-        color: blue;
-        font-family: "Arial";
-      }
-
-      a:hover {
-        opacity: 0.6;
-      }
-    `}</style>
-  </>
-);
 
 const LogItem = ({ id, type, message, date }) => {
   const logDate = new Date(date);
