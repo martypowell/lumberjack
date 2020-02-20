@@ -1,32 +1,11 @@
 import DefaultLayout from "../components/DefaultLayout";
 import fetch from "isomorphic-unfetch";
 import useSWR from "swr";
-import LogLink from "../components/LogLink";
+import LogItem from "../components/LogItem";
 
 function fetcher(url) {
   return fetch(url).then(r => r.json());
 }
-
-const LogItem = ({ id, type, message, date }) => {
-  const logDate = new Date(date);
-
-  return (
-    <div
-      style={{
-        padding: "10px",
-        marginBottom: "10px",
-        border: "1px solid gray"
-      }}
-    >
-      <h3>{type}</h3>
-      <span>
-        {logDate.toLocaleDateString()} {logDate.toLocaleTimeString()}
-      </span>
-      <p>{message}</p>
-      <LogLink label="Details" id={id} />
-    </div>
-  );
-};
 
 const Index = ({ logs: initialData }) => {
   const { data: logs, error } = useSWR("/api/logs", fetcher, { initialData });
