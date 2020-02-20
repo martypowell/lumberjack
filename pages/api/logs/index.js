@@ -31,7 +31,15 @@ let logs = [
  * @param {object} res
  */
 const handleGET = (req, res) => {
-  res.status(200).json(logs);
+  const {
+    query: { id }
+  } = req;
+
+  if (id) {
+    res.status(200).json(logs.find(x => x.id === parseInt(id)));
+  } else {
+    res.status(200).json(logs);
+  }
 };
 
 /**
@@ -40,8 +48,7 @@ const handleGET = (req, res) => {
  * @param {object} res
  */
 const handlePOST = ({ body: requestBody }, res) => {
-  const log = JSON.parse(requestBody);
-  res.status(200).json({ ...log, ...{ date: new Date() } });
+  res.status(200).json({ ...requestBody, ...{ date: new Date() } });
 };
 
 export default (req, res) => {
