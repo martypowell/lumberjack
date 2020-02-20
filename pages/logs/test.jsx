@@ -7,7 +7,10 @@ const TestPage = props => {
       body: JSON.stringify({
         type: "warning",
         message: "This is a sample warning message from the client test page."
-      })
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
     });
     const data = await resp.json();
     console.log(data);
