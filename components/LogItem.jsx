@@ -1,8 +1,6 @@
 import LogLink from "./LogLink";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
 import ErrorIcon from "@material-ui/icons/Error";
 import WarningIcon from "@material-ui/icons/Warning";
 import InfoIcon from "@material-ui/icons/Info";
@@ -33,12 +31,8 @@ const LogItem = ({ id, type = "", message, date }) => {
       break;
   }
 
-  const handleClick = () => {
-    alert("hi");
-  };
-
   return (
-    <ListItem key={id}>
+    <ListItem>
       <ListItemIcon>
         <Icon style={{ color: color }} />
       </ListItemIcon>

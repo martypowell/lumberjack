@@ -21,10 +21,10 @@ const Index = ({ logs: initialData }) => {
       <h2>Most Recent Logs</h2>
       <List>
         {logs.map(log => (
-          <>
-            <LogItem key={log.id} {...log} />
-            <Divider variant="" component="li" />
-          </>
+          <React.Fragment key={log.id}>
+            <LogItem {...log} />
+            <Divider component="li" />
+          </React.Fragment>
         ))}
       </List>
     </DefaultLayout>
