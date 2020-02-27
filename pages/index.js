@@ -2,6 +2,8 @@ import DefaultLayout from "../components/DefaultLayout";
 import fetch from "isomorphic-unfetch";
 import useSWR from "swr";
 import LogItem from "../components/LogItem";
+import List from "@material-ui/core/List";
+import { Divider } from "@material-ui/core";
 
 function fetcher(url) {
   return fetch(url).then(r => r.json());
@@ -17,9 +19,14 @@ const Index = ({ logs: initialData }) => {
     <DefaultLayout>
       <h1>LumberJack</h1>
       <h2>Most Recent Logs</h2>
-      {logs.map(log => (
-        <LogItem key={log.id} {...log} />
-      ))}
+      <List>
+        {logs.map(log => (
+          <>
+            <LogItem key={log.id} {...log} />
+            <Divider variant="" component="li" />
+          </>
+        ))}
+      </List>
     </DefaultLayout>
   );
 };
