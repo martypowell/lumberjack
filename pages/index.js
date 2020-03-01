@@ -3,7 +3,7 @@ import fetch from "isomorphic-unfetch";
 import useSWR from "swr";
 import LogItem from "../components/LogItem";
 import List from "@material-ui/core/List";
-import { Divider } from "@material-ui/core";
+import ListSubheader from "@material-ui/core/ListSubheader";
 
 function fetcher(url) {
   return fetch(url).then(r => r.json());
@@ -17,13 +17,13 @@ const Index = ({ logs: initialData }) => {
 
   return (
     <DefaultLayout>
-      <h1>LumberJack</h1>
-      <h2>Most Recent Logs</h2>
-      <List>
+      <List
+        subheader={<ListSubheader>Most Recent Logs</ListSubheader>}
+        style={{ background: "white" }}
+      >
         {logs.map(log => (
           <React.Fragment key={log.id}>
             <LogItem {...log} />
-            <Divider component="li" />
           </React.Fragment>
         ))}
       </List>

@@ -3,8 +3,7 @@ import Head from "next/head";
 
 const layoutStyle = {
   margin: 20,
-  padding: 20,
-  border: "1px solid #DDD"
+  padding: 20
 };
 
 const DefaultLayout = ({ children, ...rest }) => (
@@ -21,6 +20,11 @@ const DefaultLayout = ({ children, ...rest }) => (
       <Navbar />
       {children}
     </div>
+    <style jsx global>{`
+      body {
+        background: #f5f5f5;
+      }
+    `}</style>
   </>
 );
 
