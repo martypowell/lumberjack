@@ -40,6 +40,11 @@ const Navbar = props => {
             <a>About</a>
           </Link>
         </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Link href="/login">
+            <a>Login</a>
+          </Link>
+        </MenuItem>
       </Menu>
     </>
   );
