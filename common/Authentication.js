@@ -6,7 +6,7 @@ export default initAuth0({
   clientSecret:
     "ao2_3OriogcpDXWiAz0byL6UZR5l-4zrkMGk4SovIyNuSlpmIlTcfDUndiguGra4",
   scope: "openid profile",
-  redirectUri: "http://localhost:3000/api/callback",
+  redirectUri: "http://localhost:3000/profile",
   postLogoutRedirectUri: "http://localhost:3000/",
   session: {
     cookieSecret: "some-very-very-very-very-very-very-very-very-long-secret",

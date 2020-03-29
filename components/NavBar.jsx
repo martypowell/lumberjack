@@ -41,7 +41,7 @@ const Navbar = props => {
           </Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link href="/login">
+          <Link href="/api/login">
             <a>Login</a>
           </Link>
         </MenuItem>

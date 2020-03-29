@@ -1,4 +1,4 @@
-import auth0 from "../../utils/auth0";
+import auth0 from "../../common/Authentication";
 
 export default async function login(req, res) {
   try {
